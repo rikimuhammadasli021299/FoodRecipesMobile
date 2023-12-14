@@ -23,6 +23,9 @@ import IconUser from './IconUser.svg';
 import IconMyRecipes from './IconMyRecipes.svg';
 import IconMyBookmark from './IconMyBookmark.svg';
 import IconMyLike from './IconMyLike.svg';
+import IconLiked from './IconLiked.svg';
+import IconUnliked from './IconUnliked.svg';
+import IconMyUnliked from './IconMyUnliked.svg';
 
 export {
   Logo,
@@ -49,4 +52,7 @@ export {
   IconMyRecipes,
   IconMyBookmark,
   IconMyLike,
+  IconLiked,
+  IconUnliked,
+  IconMyUnliked,
 };

@@ -31,12 +31,12 @@ const Profile = () => {
       <Stack.Screen
         name="SavedRecipes"
         component={SavedRecipes}
-        options={{title: 'Saved Recipes'}}
+        options={{headerShown: false}}
       />
       <Stack.Screen
         name="LikedRecipes"
         component={LikedRecipes}
-        options={{title: 'Liked Recipes'}}
+        options={{headerShown: false}}
       />
       <Stack.Screen
         name="EditRecipe"

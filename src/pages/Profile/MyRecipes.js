@@ -48,62 +48,81 @@ const MyRecipes = ({navigation}) => {
       <View style={styles.page}>
         <TitlePage content={'My Recipes'} />
       </View>
-      {recipes?.data?.map(items => {
-        return (
-          <View style={styles.container} key={items.id_recipe}>
-            <TouchableOpacity
-              style={{display: 'flex', flexDirection: 'row'}}
-              onPress={() =>
-                navigation.navigate('DetailRecipe', {
-                  id_recipe: items.id_recipe,
-                })
-              }>
-              <Image source={{uri: items.photo}} style={styles.image} />
-              <View style={styles.titleRecipe}>
-                <Text style={styles.textTitle}>{items.title}</Text>
-                <Text style={styles.textCategory}>{items.category}</Text>
-              </View>
-            </TouchableOpacity>
-            <View style={styles.action}>
-              <Text
-                style={styles.textEdit}
+      {recipes?.data?.length > 0 ? (
+        recipes?.data?.map(items => {
+          return (
+            <View style={styles.container} key={items.id_recipe}>
+              <TouchableOpacity
+                style={{display: 'flex', flexDirection: 'row'}}
                 onPress={() =>
-                  navigation.navigate('EditRecipe', {
+                  navigation.navigate('DetailRecipe', {
                     id_recipe: items.id_recipe,
                   })
                 }>
-                Edit
-              </Text>
-              <Text
-                style={styles.textDelete}
-                onPress={() =>
-                  AlertConfirmation({
-                    alertTitle: 'Confirmation',
-                    alertMsg: 'Are you sure want to delete this recipe?',
-                    action: async function () {
-                      try {
-                        const res = await axios.delete(
-                          `https://bewildered-rose-leggings.cyclic.app/recipe/${items.id_recipe}`,
-                          {
-                            headers: {
-                              token,
+                <Image source={{uri: items.photo}} style={styles.image} />
+                <View style={styles.titleRecipe}>
+                  <Text style={styles.textTitle}>{items.title}</Text>
+                  <Text style={styles.textCategory}>{items.category}</Text>
+                </View>
+              </TouchableOpacity>
+              <View style={styles.action}>
+                <Text
+                  style={styles.textEdit}
+                  onPress={() =>
+                    navigation.navigate('EditRecipe', {
+                      id_recipe: items.id_recipe,
+                    })
+                  }>
+                  Edit
+                </Text>
+                <Text
+                  style={styles.textDelete}
+                  onPress={() =>
+                    AlertConfirmation({
+                      alertTitle: 'Confirmation',
+                      alertMsg: 'Are you sure want to delete this recipe?',
+                      action: async function () {
+                        try {
+                          const res = await axios.delete(
+                            `https://bewildered-rose-leggings.cyclic.app/recipe/${items.id_recipe}`,
+                            {
+                              headers: {
+                                token,
+                              },
                             },
-                          },
-                        );
-                        getMyRecipes();
-                        console.log(res.data.message);
-                      } catch (error) {
-                        console.log(error.message);
-                      }
-                    },
-                  })
-                }>
-                Delete
-              </Text>
+                          );
+                          getMyRecipes();
+                          console.log(res.data.message);
+                        } catch (error) {
+                          console.log(error.message);
+                        }
+                      },
+                    })
+                  }>
+                  Delete
+                </Text>
+              </View>
             </View>
-          </View>
-        );
-      })}
+          );
+        })
+      ) : (
+        <View
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            marginHorizontal: 28,
+          }}>
+          <Text
+            style={{
+              color: '#aeb4bdff',
+              fontFamily: 'Poppins Regular',
+              fontSize: 23,
+            }}>
+            No recipes yet
+          </Text>
+        </View>
+      )}
     </ScrollView>
   );
 };

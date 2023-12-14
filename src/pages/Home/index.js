@@ -117,7 +117,7 @@ const Home = ({navigation}) => {
             <Text style={styles.textNewRecipes}>Dessert</Text>
           </View>
         </View>
-        <Text style={styles.textPopular}>Popular For You</Text>
+        <Text style={styles.textPopular}>Latest Recipes</Text>
         <View style={styles.cardPopular}>
           <ScrollView showsHorizontalScrollIndicator={false}>
             <FlatList
