@@ -1,15 +1,17 @@
 /* eslint-disable prettier/prettier */
+/* eslint-disable react-hooks/exhaustive-deps */
 import {ImageBackground, StyleSheet, View, Text} from 'react-native';
 import React from 'react';
 import {useEffect} from 'react';
 import {splash} from '../../assets';
 import {Logo} from '../../assets';
-// import {Image} from 'react-native-svg';
+import {useSelector} from 'react-redux';
 
 const Splash = ({navigation}) => {
+  const auth = useSelector(state => state.auth);
   useEffect(() => {
     setTimeout(() => {
-      navigation.replace('MainApp');
+      navigation.replace(auth.data ? 'MainApp' : 'Auth');
     }, 3000);
   }, [navigation]);
 

@@ -1,9 +1,9 @@
-import {StyleSheet, StatusBar} from 'react-native';
+import {StatusBar} from 'react-native';
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import Router from './router';
 
-const App = () => {
+const Main = () => {
   return (
     <NavigationContainer>
       <StatusBar barStyle={'dark-content'} backgroundColor="white" />
@@ -12,6 +12,4 @@ const App = () => {
   );
 };
 
-export default App;
-
-const styles = StyleSheet.create({});
+export default Main;

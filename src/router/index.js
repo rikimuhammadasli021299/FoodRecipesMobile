@@ -11,8 +11,10 @@ import {
   DetailRecipe,
   SearchRecipes,
   Chat,
+  Auth,
 } from '../pages';
 import {BottomNavigatiors} from '../components';
+import {useSelector} from 'react-redux';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -37,6 +39,7 @@ const MainApp = () => {
 };
 
 const Router = () => {
+  const auth = useSelector(state => state.auth);
   return (
     <Stack.Navigator initialRouteName="Splash">
       <Stack.Screen
@@ -44,11 +47,20 @@ const Router = () => {
         component={Splash}
         options={{headerShown: false}}
       />
-      <Stack.Screen
-        name="MainApp"
-        component={MainApp}
-        options={{headerShown: false}}
-      />
+      {auth.data ? (
+        <Stack.Screen
+          name="MainApp"
+          component={MainApp}
+          options={{headerShown: false}}
+        />
+      ) : (
+        <Stack.Screen
+          name="Auth"
+          component={Auth}
+          options={{headerShown: false}}
+        />
+      )}
+
       <Stack.Screen
         name="DetailRecipe"
         component={DetailRecipe}

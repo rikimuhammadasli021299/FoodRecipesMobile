@@ -26,6 +26,13 @@ import IconMyLike from './IconMyLike.svg';
 import IconLiked from './IconLiked.svg';
 import IconUnliked from './IconUnliked.svg';
 import IconMyUnliked from './IconMyUnliked.svg';
+import Lock from './Lock.svg';
+import LockDark from './LockDark.svg';
+import EyeVisible from './EyeVisible.svg';
+import EyeSlashVisible from './EyeSlashVisible.svg';
+import IconForgotPassword from './IconForgotPassword.svg';
+import Unlock from './Unlock.svg';
+import UnlockDark from './UnlockDark.svg';
 
 export {
   Logo,
@@ -55,4 +62,11 @@ export {
   IconLiked,
   IconUnliked,
   IconMyUnliked,
+  Lock,
+  LockDark,
+  EyeVisible,
+  EyeSlashVisible,
+  IconForgotPassword,
+  Unlock,
+  UnlockDark,
 };

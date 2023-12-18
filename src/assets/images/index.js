@@ -5,5 +5,16 @@ import imgPopular2 from '../images/imgPopular2.jpg';
 import imgPopular3 from '../images/imgPopular3.jpg';
 import imgPopular4 from '../images/imgPopular4.jpg';
 import userDummy from '../images/userDummy.png';
+import showPassword from '../images/showPassword.png';
+import hidePassword from '../images/hidePassword.png';
 
-export {splash, imgPopular1, imgPopular2, imgPopular3, imgPopular4, userDummy};
+export {
+  splash,
+  imgPopular1,
+  imgPopular2,
+  imgPopular3,
+  imgPopular4,
+  userDummy,
+  showPassword,
+  hidePassword,
+};

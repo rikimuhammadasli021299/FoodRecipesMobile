@@ -17,6 +17,7 @@ import DropDownPicker from 'react-native-dropdown-picker';
 import axios from 'axios';
 import {TitlePage} from '../../components';
 import {useIsFocused} from '@react-navigation/native';
+import {useSelector} from 'react-redux';
 
 const options = {
   title: 'Select Image',
@@ -43,6 +44,7 @@ const PostRecipes = ({navigation}) => {
   const [photo, setPhoto] = useState();
 
   const isFocused = useIsFocused();
+  const auth = useSelector(state => state.auth);
 
   useEffect(() => {
     getCategory();
@@ -52,8 +54,7 @@ const PostRecipes = ({navigation}) => {
     }
   }, [isFocused]);
 
-  let token =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoxMywibmFtZSI6InJpa2kgbXVoYW1tYWQgbnVyaGlkYXlhdCIsImVtYWlsIjoicmlraW11aGFtbWFkQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJiJDEwJGdBNTAuTzVDSE5VY2RLWWVzaVZOQi5YNWFabEQ0U29EemVHbW13ZjJGWW9rWE5nZzRnY3BpIiwicGhvbmVfbnVtYmVyIjoiMDg3NjU0MzIxIiwicGhvdG8iOiJodHRwczovL3Jlcy5jbG91ZGluYXJ5LmNvbS9kemV0ZWYxeDAvaW1hZ2UvdXBsb2FkL3YxNzAwOTA4NDU0L3JlY2lwZXMvbTk5cm5oYTRjbDJsa3pkaHpkamwucG5nIiwiY3JlYXRlZF90aW1lIjoiMjAyMy0xMS0wMVQwOTozOTozMy4yMDZaIiwidXBkYXRlZF90aW1lIjoiMjAyMy0xMS0zMFQwOTowNDoxMy45NzBaIiwibGV2ZWwiOjIsInV1aWQiOiIzMjFjYmEiLCJpc19hY3RpdmUiOnRydWUsIm90cCI6bnVsbCwiaWF0IjoxNzAyNDYxOTI0fQ.aDKg3qLK4T2jr2raMfVNAhNYVAPfZp7sxjxtIvhhqto';
+  let token = auth?.data?.token?.accessToken;
 
   const getCategory = async () => {
     try {
@@ -212,7 +213,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     width: '100%',
     marginLeft: 5,
-    color: '#B6B6B6',
+    color: 'black',
     fontWeight: '900',
     fontFamily: 'Poppins-Black',
   },
@@ -220,7 +221,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     width: '100%',
     marginLeft: 5,
-    color: '#B6B6B6',
+    color: 'black',
     fontWeight: '900',
     fontFamily: 'Poppins-Black',
     textAlignVertical: 'top',

@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#EFEFEF',
     width: '100%',
     marginLeft: 5,
-    color: '#B6B6B6',
+    color: 'black',
     fontWeight: '900',
   },
 });

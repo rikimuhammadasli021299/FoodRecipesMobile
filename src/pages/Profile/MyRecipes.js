@@ -13,10 +13,12 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import {TitlePage, AlertConfirmation} from '../../components';
 import {useIsFocused} from '@react-navigation/native';
+import {useSelector} from 'react-redux';
 
 const MyRecipes = ({navigation}) => {
   const [recipes, setRecipes] = useState();
   const isFocused = useIsFocused();
+  const auth = useSelector(state => state.auth);
 
   useEffect(() => {
     if (isFocused) {
@@ -24,8 +26,7 @@ const MyRecipes = ({navigation}) => {
     }
   }, [isFocused]);
 
-  let token =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoxMywibmFtZSI6InJpa2kgbXVoYW1tYWQgbnVyaGlkYXlhdCIsImVtYWlsIjoicmlraW11aGFtbWFkQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJiJDEwJGdBNTAuTzVDSE5VY2RLWWVzaVZOQi5YNWFabEQ0U29EemVHbW13ZjJGWW9rWE5nZzRnY3BpIiwicGhvbmVfbnVtYmVyIjoiMDg3NjU0MzIxIiwicGhvdG8iOiJodHRwczovL3Jlcy5jbG91ZGluYXJ5LmNvbS9kemV0ZWYxeDAvaW1hZ2UvdXBsb2FkL3YxNzAwOTA4NDU0L3JlY2lwZXMvbTk5cm5oYTRjbDJsa3pkaHpkamwucG5nIiwiY3JlYXRlZF90aW1lIjoiMjAyMy0xMS0wMVQwOTozOTozMy4yMDZaIiwidXBkYXRlZF90aW1lIjoiMjAyMy0xMS0zMFQwOTowNDoxMy45NzBaIiwibGV2ZWwiOjIsInV1aWQiOiIzMjFjYmEiLCJpc19hY3RpdmUiOnRydWUsIm90cCI6bnVsbCwiaWF0IjoxNzAyNDYxOTI0fQ.aDKg3qLK4T2jr2raMfVNAhNYVAPfZp7sxjxtIvhhqto';
+  let token = auth?.data?.token?.accessToken;
 
   const getMyRecipes = async () => {
     try {

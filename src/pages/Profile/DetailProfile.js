@@ -18,14 +18,18 @@ import {
   IconMyLike,
   IconMyBookmark,
   ArrowGo,
+  Lock,
 } from '../../assets';
+import {logoutAction} from '../../storages/action/auth';
+import {useDispatch, useSelector} from 'react-redux';
 
 const DetailProfile = ({navigation}) => {
+  const dispatch = useDispatch();
   const [dataProfile, setDataProfile] = useState();
   const isFocused = useIsFocused();
-  let token =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZF91c2VyIjoxMywibmFtZSI6InJpa2kgbXVoYW1tYWQgbnVyaGlkYXlhdCIsImVtYWlsIjoicmlraW11aGFtbWFkQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJiJDEwJGdBNTAuTzVDSE5VY2RLWWVzaVZOQi5YNWFabEQ0U29EemVHbW13ZjJGWW9rWE5nZzRnY3BpIiwicGhvbmVfbnVtYmVyIjoiMDg3NjU0MzIxIiwicGhvdG8iOiJodHRwczovL3Jlcy5jbG91ZGluYXJ5LmNvbS9kemV0ZWYxeDAvaW1hZ2UvdXBsb2FkL3YxNzAwOTA4NDU0L3JlY2lwZXMvbTk5cm5oYTRjbDJsa3pkaHpkamwucG5nIiwiY3JlYXRlZF90aW1lIjoiMjAyMy0xMS0wMVQwOTozOTozMy4yMDZaIiwidXBkYXRlZF90aW1lIjoiMjAyMy0xMS0zMFQwOTowNDoxMy45NzBaIiwibGV2ZWwiOjIsInV1aWQiOiIzMjFjYmEiLCJpc19hY3RpdmUiOnRydWUsIm90cCI6bnVsbCwiaWF0IjoxNzAyNDYxOTI0fQ.aDKg3qLK4T2jr2raMfVNAhNYVAPfZp7sxjxtIvhhqto';
-  let id_user = '321cba';
+  const auth = useSelector(state => state.auth);
+  let token = auth?.data?.token?.accessToken;
+  let id_user = auth?.data?.uuid;
 
   const getDetailProfile = async () => {
     try {
@@ -85,6 +89,13 @@ const DetailProfile = ({navigation}) => {
             onPress={() => navigation.navigate('LikedRecipes')}>
             <IconMyLike />
             <Text style={styles.tabLiked}>Liked Recipe</Text>
+            <ArrowGo style={styles.arrowGo} />
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.tab}
+            onPress={() => dispatch(logoutAction(navigation))}>
+            <Lock />
+            <Text style={styles.tabLiked}>Logout</Text>
             <ArrowGo style={styles.arrowGo} />
           </TouchableOpacity>
         </View>
