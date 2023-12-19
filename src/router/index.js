@@ -10,7 +10,7 @@ import {
   Splash,
   DetailRecipe,
   SearchRecipes,
-  Chat,
+  Comments,
   Auth,
 } from '../pages';
 import {BottomNavigatiors} from '../components';
@@ -28,7 +28,11 @@ const MainApp = () => {
         component={AddRecipes}
         options={{headerShown: false}}
       />
-      <Tab.Screen name="Chat" component={Chat} />
+      <Tab.Screen
+        name="Comments"
+        component={Comments}
+        options={{headerShown: false}}
+      />
       <Tab.Screen
         name="Profile"
         component={Profile}

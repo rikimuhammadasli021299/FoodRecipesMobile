@@ -33,6 +33,7 @@ import EyeSlashVisible from './EyeSlashVisible.svg';
 import IconForgotPassword from './IconForgotPassword.svg';
 import Unlock from './Unlock.svg';
 import UnlockDark from './UnlockDark.svg';
+import IconSend from './IconSend.svg';
 
 export {
   Logo,
@@ -69,4 +70,5 @@ export {
   IconForgotPassword,
   Unlock,
   UnlockDark,
+  IconSend,
 };

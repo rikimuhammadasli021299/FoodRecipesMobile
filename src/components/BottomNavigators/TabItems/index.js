@@ -23,7 +23,7 @@ const TabItems = ({isFocused, onPress, onLongPress, label}) => {
       return isFocused ? <PlusSquareActive /> : <PlusSquare />;
     }
 
-    if (label === 'Chat') {
+    if (label === 'Comments') {
       return isFocused ? <MessageCircleActive /> : <MessageCircle />;
     }
     if (label === 'Profile') {

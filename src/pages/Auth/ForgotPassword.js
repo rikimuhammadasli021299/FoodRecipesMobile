@@ -129,6 +129,7 @@ const styles = StyleSheet.create({
     borderStyle: 'solid',
     borderWidth: 1,
     borderColor: '#EFC81A',
+    elevation: 5,
   },
   wrapperEmail: {
     display: 'flex',

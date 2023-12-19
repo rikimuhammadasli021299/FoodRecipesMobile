@@ -93,7 +93,7 @@ export const getOTPAction = (email, navigation) => async dispatch => {
         'content-type': 'application/x-www-form-urlencoded',
       },
     });
-    dispatch({payload: result.data, type: 'GET_OTP_UCCESS'});
+    dispatch({payload: result.data, type: 'GET_OTP_SUCCESS'});
     SweetAlert.showAlertWithOptions(
       {
         title: 'Success!',

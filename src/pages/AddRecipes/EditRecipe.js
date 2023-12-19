@@ -41,7 +41,9 @@ const EditRecipe = ({route, navigation}) => {
   const [idCategory, setIdCategory] = useState();
   const [itemsCategory, setItemsCategory] = useState([{label: '', value: ''}]);
   const [title, setTitle] = useState();
+  const [titleIsActive, setTitleIsActive] = useState();
   const [ingredients, setIngredients] = useState();
+  const [ingredientsIsActive, setIngredientsIsActive] = useState();
   const [photo, setPhoto] = useState();
   const auth = useSelector(state => state.auth);
 
@@ -136,16 +138,28 @@ const EditRecipe = ({route, navigation}) => {
       <ScrollView style={styles.page} nestedScrollEnabled={true}>
         <View style={styles.page} contentInsetAdjustmentBehavior="automatic">
           <TitlePage content={'Update Your Recipe'} />
-          <View style={styles.inputTitleRecipe}>
+          <View
+            style={
+              titleIsActive
+                ? styles.inputTitleRecipeActive
+                : styles.inputTitleRecipe
+            }>
             <BookOpen style={styles.iconBook} />
             <TextInput
               style={styles.inputForm}
               placeholder="Title"
               value={title}
               onChangeText={value => setTitle(value)}
+              onFocus={() => setTitleIsActive(true)}
+              onBlur={() => setTitleIsActive(false)}
             />
           </View>
-          <View style={styles.wrapperIngredients}>
+          <View
+            style={
+              ingredientsIsActive
+                ? styles.wrapperIngredientsActive
+                : styles.wrapperIngredients
+            }>
             <TextInput
               multiline={true}
               numberOfLines={13}
@@ -153,6 +167,8 @@ const EditRecipe = ({route, navigation}) => {
               value={ingredients}
               style={styles.inputIngredients}
               onChangeText={value => setIngredients(value)}
+              onFocus={() => setIngredientsIsActive(true)}
+              onBlur={() => setIngredientsIsActive(false)}
             />
           </View>
           {photo ? (
@@ -212,6 +228,23 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  inputTitleRecipeActive: {
+    backgroundColor: '#FFFFFF',
+    display: 'flex',
+    flexDirection: 'row',
+    marginTop: 20,
+    overflow: 'hidden',
+    padding: 5,
+    marginHorizontal: 28,
+    borderRadius: 10,
+    alignContent: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: '#EFC81A',
+    elevation: 5,
+  },
   wrapperIngredients: {
     backgroundColor: '#FFFFFF',
     marginTop: 20,
@@ -219,6 +252,18 @@ const styles = StyleSheet.create({
     padding: 5,
     marginHorizontal: 28,
     borderRadius: 10,
+  },
+  wrapperIngredientsActive: {
+    backgroundColor: '#FFFFFF',
+    marginTop: 20,
+    overflow: 'hidden',
+    padding: 5,
+    marginHorizontal: 28,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: '#EFC81A',
+    elevation: 5,
   },
   iconBook: {
     alignSelf: 'center',

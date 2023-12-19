@@ -21,7 +21,7 @@ const Profile = () => {
       <Stack.Screen
         name="EditProfile"
         component={EditProfile}
-        options={{title: 'Edit Profile'}}
+        options={{headerShown: false}}
       />
       <Stack.Screen
         name="MyRecipes"

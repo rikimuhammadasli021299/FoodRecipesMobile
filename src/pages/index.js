@@ -5,7 +5,7 @@ import Profile from './Profile';
 import Splash from './Splash';
 import DetailRecipe from './DetailRecipe';
 import SearchRecipes from './SearchRecipes';
-import Chat from './Chat';
+import Comments from './Comments';
 import Auth from './Auth';
 
 export {
@@ -15,6 +15,6 @@ export {
   Splash,
   DetailRecipe,
   SearchRecipes,
-  Chat,
+  Comments,
   Auth,
 };
