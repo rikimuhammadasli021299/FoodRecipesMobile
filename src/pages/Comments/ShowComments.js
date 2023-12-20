@@ -241,6 +241,7 @@ const styles = StyleSheet.create({
     borderColor: '#EFC81A',
     width: '100%',
     backgroundColor: '#EEEEEE',
+    color: 'black',
   },
   iconSend: {
     position: 'absolute',

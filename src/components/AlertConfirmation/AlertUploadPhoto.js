@@ -1,15 +1,16 @@
 /* eslint-disable prettier/prettier */
 import {Alert} from 'react-native';
 
-const AlertConfirmation = ({alertTitle, alertMsg, action}) => {
+const AlertUploadPhoto = ({alertTitle, alertMsg, camera, gallery}) => {
   Alert.alert(alertTitle, alertMsg, [
     {
       text: 'Cancel',
       onPress: () => console.log('Cancel Pressed'),
       style: 'cancel',
     },
-    {text: 'OK', onPress: () => action()},
+    {text: 'Camera', onPress: () => camera()},
+    {text: 'Gallery', onPress: () => gallery()},
   ]);
 };
 
-export default AlertConfirmation;
+export default AlertUploadPhoto;

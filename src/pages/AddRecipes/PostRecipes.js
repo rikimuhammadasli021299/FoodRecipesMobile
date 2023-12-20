@@ -3,6 +3,7 @@
 /* eslint-disable prettier/prettier */
 import {
   Image,
+  PermissionsAndroid,
   ScrollView,
   StyleSheet,
   Text,
@@ -12,12 +13,13 @@ import {
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import {BookOpen} from '../../assets';
-import {launchImageLibrary} from 'react-native-image-picker';
+import {launchImageLibrary, launchCamera} from 'react-native-image-picker';
 import DropDownPicker from 'react-native-dropdown-picker';
 import axios from 'axios';
 import {TitlePage} from '../../components';
 import {useIsFocused} from '@react-navigation/native';
 import {useSelector} from 'react-redux';
+import AlertUploadPhoto from '../../components/AlertConfirmation/AlertUploadPhoto';
 
 const options = {
   title: 'Select Image',
@@ -81,14 +83,92 @@ const PostRecipes = ({navigation}) => {
     setItemsCategory(data);
   };
 
-  const openGallery = async () => {
-    const image = await launchImageLibrary(options);
-    setSelectedImage(image.assets[0].uri);
-    setPhoto({
-      uri: image.assets[0].uri,
-      name: image.assets[0].fileName,
-      fileName: image.assets[0].fileName,
-      type: image.assets[0].type,
+  // const openGallery = async () => {
+  //   const image = await launchImageLibrary(options);
+  //   setSelectedImage(image.assets[0].uri);
+  //   setPhoto({
+  //     uri: image.assets[0].uri,
+  //     name: image.assets[0].fileName,
+  //     fileName: image.assets[0].fileName,
+  //     type: image.assets[0].type,
+  //   });
+  // };
+
+  const requestPermission = async () => {
+    try {
+      const granted = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.CAMERA,
+        {
+          title: 'App Camera Permission',
+          message: 'App Needs Camera Access',
+          buttonPositive: 'Ok',
+          buttonNegative: 'Cancel',
+        },
+      );
+      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+        console.log('access camera success');
+        cameraLaunch();
+      } else {
+        console.log('access camera failed');
+        console.log(PermissionsAndroid.RESULTS.GRANTED);
+      }
+    } catch (err) {
+      console.log('err');
+      console.log(err);
+    }
+  };
+
+  const cameraLaunch = () => {
+    // let option = {
+    //   storageOptions: {
+    //     skipBackup: true,
+    //     path: 'image,',
+    //   },
+    // };
+    launchCamera(options, res => {
+      console.log('respons camera ', res);
+      if (res.didCancel) {
+        console.log('user cancel camera');
+      } else if (res.error) {
+        console.log('camera error', res.errorMessage);
+      } else {
+        console.log('camera success');
+        console.log(res);
+        setSelectedImage(res.assets[0].uri);
+        setPhoto({
+          uri: res.assets[0].uri,
+          name: res.assets[0].fileName,
+          fileName: res.assets[0].fileName,
+          type: res.assets[0].type,
+        });
+      }
+    });
+  };
+
+  const galleryLaunch = () => {
+    let option = {
+      storageOptions: {
+        skipBackup: true,
+        path: 'image,',
+      },
+    };
+    launchImageLibrary(option, res => {
+      console.log('respons gallery ', res);
+      if (res.didCancel) {
+        console.log('user cancel gallery');
+      } else if (res.error) {
+        console.log('gallery error', res.errorMessage);
+      } else {
+        console.log('gallery success');
+        console.log(res);
+        setSelectedImage(res.assets[0].uri);
+        setPhoto({
+          uri: res.assets[0].uri,
+          name: res.assets[0].fileName,
+          fileName: res.assets[0].fileName,
+          type: res.assets[0].type,
+        });
+      }
     });
   };
 
@@ -166,7 +246,14 @@ const PostRecipes = ({navigation}) => {
 
           <TouchableOpacity
             style={styles.wrapperIngredients}
-            onPress={openGallery}>
+            onPress={() =>
+              AlertUploadPhoto({
+                alertTitle: 'Add photo',
+                alertMsg: 'Where will you add the photo?',
+                camera: requestPermission,
+                gallery: galleryLaunch,
+              })
+            }>
             <Text style={styles.addPhoto}>Add Photo</Text>
           </TouchableOpacity>
           <View style={styles.dropDown}>
