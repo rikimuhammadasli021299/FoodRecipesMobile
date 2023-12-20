@@ -1,79 +1,140 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Food Recipes Mobile
 
-# Getting Started
+<div align="center">
+<a href="https://github.com/rikimuhammadasli021299/FoodRecipesMobile">
+    <img src="src/assets/icons/Logo.svg" alt="Logo" width="150" height="170">
+</a>
+</div>
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+## Table of Contents
 
-## Step 1: Start the Metro Server
+- [About Project](#about-project)
+- [Requirement](#requirement)
+- [Built With](#built-with)
+- [Installation](#installation)
+- [Demo](#demo)
+- [Related Project](#related-project)
+- [Contact](#contact)
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+## About Project
 
-To start Metro, run the following command from the _root_ of your React Native project:
+Food Recipes: Your Culinary Oasis
 
-```bash
-# using npm
-npm start
+Introducing Food Recipes, your ultimate culinary companion designed to elevate your cooking experience. Whether you're a passionate home chef or an aspiring foodie, our application is crafted just for you. With Food Recipes, explore a world of culinary wonders right at your fingertips.
 
-# OR using Yarn
-yarn start
+Key Features:
+
+🌐 Recipe Hub: Share your favorite recipes with a vibrant global cooking community. Connect with fellow food enthusiasts, swap ideas, and showcase your culinary flair. Food Recipes is your platform to share and savor the diversity of home-cooked delights.
+
+📖 Culinary Library: Immerse yourself in an extensive library of recipes, ranging from timeless classics to cutting-edge creations. Never be short of inspiration for your next gastronomic adventure. Food Recipes is your culinary encyclopedia.
+
+🔎 Smart Search: Effortlessly find recipes that match your ingredients or dietary preferences. Bid farewell to the guesswork in your kitchen – Food Recipes ensures you discover the perfect recipe for any occasion.
+
+📱 Mobile Magic: Take your recipes wherever life leads you. Our user-friendly mobile app ensures you have instant access to your cooking inspirations anytime, anywhere. Your kitchen is no longer confined to the walls of your home.
+
+👨‍🍳 Masters' Insights: Learn from seasoned chefs and cooking enthusiasts. Explore valuable tips, tricks, and techniques to refine your culinary skills. Food Recipes is not just an app; it's a mentor in your culinary journey.
+
+Food Recipes is more than an application; it's a thriving community of food aficionados, a treasure trove of recipes, and your dependable source for all things culinary. Join us today and embark on a gastronomic adventure like never before.
+
+Prepare to transform your kitchen into a haven of flavors with Food Recipes! Download now and share your culinary love with the world.
+
+## Requirement
+
+Before you install this project on your Mobile Phone. You need:
+
+- **Mobile Phone with OS Android 10 or Later**, I'm using **Samsung A22 5G, Android 13** when this docs is uploaded. You can upgrade your android version for better.
+- **Stable Internet Connectivity**, This application runs online, so internet connectivity is required.
+
+## Built with
+
+- [**React Native 0.73.0**](https://reactnative.dev/docs/getting-started)
+- [**React 18.2.0**](https://react.dev/)
+- [**React Native Async Storage 1.21.0**](https://www.npmjs.com/package/@react-native-async-storage/async-storage)
+- [**React Navigation Bottom Tabs 6.5.11**]()
+- [**React Navigation Native 6.1.9**]()
+- [**React Navigation Native Stack 6.9.17**]()
+- [**Axios 1.6.2**]()
+- [**React Native Dropdown Picker 5.4.6**]()
+- [**React Native Image Picker 7.1.0**]()
+- [**React Native Safe Area Context 4.8.0**]()
+- [**React Native Screens 3.29.0**]()
+- [**React Native Snap Carousel 3.9.1**]()
+- [**React Native svg 14.1.0**]()
+- [**React Native svg Transformer 1.1.0**]()
+- [**React Redux 9.0.4**]()
+- [**Redux 5.0.0**]()
+- [**Redux Logger 3.0.6**]()
+- [**Redux Persist 6.0.0**]()
+- [**Redux Thunk 3.1.0**]()
+
+## Installation
+
+Click this button for download the complete built project APK:
+
+[![download](https://img.shields.io/badge/Download-32CD32)](https://github.com/rikimuhammadasli021299/FoodRecipesMobile/releases/tag/v0.0.1)
+
+or
+
+```
+git clone https://github.com/rikimuhammadasli021299/FoodRecipesMobile.git
 ```
 
-## Step 2: Start your Application
+After process cloning is done, you need install package dependencies, to make this project work properly, in your terminal type:
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
-
-### For Android
-
-```bash
-# using npm
+```
+npm i
+npm run start
 npm run android
-
-# OR using Yarn
-yarn android
 ```
 
-### For iOS
+choose "A" for open in android or "I" for open in IOS.
 
-```bash
-# using npm
-npm run ios
+## Demo
 
-# OR using Yarn
-yarn ios
+if you want to login, without register
+
+```
+email: user01@gmail.com
+password: user01
 ```
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+## ScreenShoot Project
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+|                                                             Splash Screen                                                              |                                                          Login Screen                                                          |                                                           Register Screen                                                            |                                                            Home Screen                                                             |
+| :------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------: |
+| ![Splash Screen](https://res.cloudinary.com/dzetef1x0/image/upload/v1703094611/screenshots%20recipes%20mobile/SplashScreen_j4hmvp.png) | ![Login Screen](https://res.cloudinary.com/dzetef1x0/image/upload/v1703094606/screenshots%20recipes%20mobile/Login_htkuvs.png) | ![Register Screen](https://res.cloudinary.com/dzetef1x0/image/upload/v1703095081/screenshots%20recipes%20mobile/Register_ntjhvh.png) | ![Home Screen](https://res.cloudinary.com/dzetef1x0/image/upload/v1703095247/screenshots%20recipes%20mobile/HomeScreen_mladjk.png) |
 
-## Step 3: Modifying your App
+|                                                              Search Recipes                                                              |                                                             Detail Recipes                                                              |                                                            Add Recipes                                                             |                                                           Comment Recipes                                                            |
+| :--------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------: |
+| ![Search Recipes](https://res.cloudinary.com/dzetef1x0/image/upload/v1703094604/screenshots%20recipes%20mobile/SearchRecipes_zokbmu.png) | ![Detail Recipes](https://res.cloudinary.com/dzetef1x0/image/upload/v1703094610/screenshots%20recipes%20mobile/DetailRecipe_ogqvby.png) | ![Add Recipes](https://res.cloudinary.com/dzetef1x0/image/upload/v1703094605/screenshots%20recipes%20mobile/AddRecipes_tizbki.png) | ![Comment Recipes](https://res.cloudinary.com/dzetef1x0/image/upload/v1703095080/screenshots%20recipes%20mobile/Comments_e0gbvi.png) |
 
-Now that you have successfully run the app, let's modify it.
+|                                                           Profile                                                           |                                                             Edit Profile                                                             |                                                            My Recipes                                                            |                                                             Liked Recipes                                                              |
+| :-------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------: |
+| ![Profile](https://res.cloudinary.com/dzetef1x0/image/upload/v1703094606/screenshots%20recipes%20mobile/Profile_gijpgp.png) | ![Edit Profile](https://res.cloudinary.com/dzetef1x0/image/upload/v1703095984/screenshots%20recipes%20mobile/EditProfile_hegnjc.png) | ![My Recipes](https://res.cloudinary.com/dzetef1x0/image/upload/v1703094607/screenshots%20recipes%20mobile/MyRecipes_ayfxi9.png) | ![Liked Recipes](https://res.cloudinary.com/dzetef1x0/image/upload/v1703096171/screenshots%20recipes%20mobile/LikedRecipes_dlxdxo.png) |
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+## Related Project
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+You can visit my github link related to the project:
 
-## Congratulations! :tada:
+🚀 **[Download Food Recipes App](https://github.com/rikimuhammadasli021299/FoodRecipesMobile/releases/tag/v0.0.1)**
 
-You've successfully run and modified your React Native App. :partying_face:
+## Contact
 
-### Now what?
+You can reach me on:
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
+[![gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:rikimuhammadnurhidayat@gmail.com)
+[![instagram](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://instagram.com/nurhidayat.riki)
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/rikinurhidayat)
+[![github](https://img.shields.io/badge/Github-232b2b?style=for-the-badge&logo=github&logoColor=white)](https://www.github.com/rikimuhammadasli021299)
 
-# Troubleshooting
+I know this project is not perfect, so I am very open to receiving criticism and suggestions to make this project even better. Thank you 😊
 
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+Contributions are the cornerstone of the open source community, turning it into a remarkable space for learning, inspiring, and innovating. Your contributions are **highly valued**.
 
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+```
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b your/branch`)
+3. Commit your Changes (`git commit -m 'Add amazing feature'`)
+4. Push to the Branch (`git push origin feature/yourbranch`)
+5. Open a Pull Request
+```
