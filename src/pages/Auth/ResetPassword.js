@@ -24,7 +24,7 @@ import {
 } from '../../assets';
 import {useDispatch, useSelector} from 'react-redux';
 import {resetPasswordAction} from '../../storages/action/auth';
-import SweetAlert from 'react-native-sweet-alert';
+import AlertFailed from '../../components/AlertConfirmation/AlertFailed';
 
 const ResetPassword = ({navigation}) => {
   const [otp, setOtp] = useState();
@@ -51,15 +51,8 @@ const ResetPassword = ({navigation}) => {
     if (password === confirmPassword) {
       return dispatch(resetPasswordAction(otp, password, navigation));
     } else {
-      return SweetAlert.showAlertWithOptions(
-        {
-          title: 'Failed!',
-          subTitle: 'Password is mismatch',
-          confirmButtonColor: '#000',
-          style: 'error',
-        },
-        () => console.log('Password is mismatch'),
-      );
+      AlertFailed('Reset Password Failed', 'Password is mismatch');
+      console.log('Password is mismatch');
     }
   };
 

@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 import axios from 'axios';
-import SweetAlert from 'react-native-sweet-alert';
+import AlertFailed from '../../components/AlertConfirmation/AlertFailed';
+import AlertSuccess from '../../components/AlertConfirmation/AlertSuccess';
 
 const base_url = 'https://ruby-long-kingfisher.cyclic.app';
 
@@ -20,17 +21,9 @@ export const loginAction = (email, password) => async dispatch => {
     dispatch({payload: result.data, type: 'LOGIN_SUCCESS'});
   } catch (err) {
     dispatch({payload: err.response.data, type: 'LOGIN_ERROR'});
-    SweetAlert.showAlertWithOptions(
-      {
-        title: 'Failed!',
-        subTitle: `error :  ${
-          err.response.data.messsage || err.response.data.message
-        } `,
-        confirmButtonColor: '#000',
-        style: 'error',
-      },
-      () =>
-        console.log(err.response.data.messsage || err.response.data.message),
+    AlertFailed(
+      'Login Failed',
+      err.response.data.messsage || err.response.data.message,
     );
   }
 };
@@ -55,28 +48,13 @@ export const registerAction =
         },
       });
       dispatch({payload: result.data, type: 'AUTH_REGISTER_SUCCESS'});
-      SweetAlert.showAlertWithOptions(
-        {
-          title: 'Success!',
-          subTitle: result.data.message,
-          style: 'success',
-        },
-        () => console.log(result.data.message),
-      );
+      AlertSuccess('Register Success', result.data.message);
       navigation.navigate('Login');
     } catch (err) {
       dispatch({payload: err.response.data, type: 'AUTH_REGISTER_ERROR'});
-      SweetAlert.showAlertWithOptions(
-        {
-          title: 'Failed!',
-          subTitle: `error :  ${
-            err.response.data.messsage || err.response.data.message
-          } `,
-          confirmButtonColor: '#000',
-          style: 'error',
-        },
-        () =>
-          console.log(err.response.data.messsage || err.response.data.message),
+      AlertFailed(
+        'Register Failed',
+        err.response.data.messsage || err.response.data.message,
       );
     }
   };
@@ -94,41 +72,14 @@ export const getOTPAction = (email, navigation) => async dispatch => {
       },
     });
     dispatch({payload: result.data, type: 'GET_OTP_SUCCESS'});
-    SweetAlert.showAlertWithOptions(
-      {
-        title: 'Success!',
-        subTitle: result.data.message,
-        style: 'success',
-      },
-      () => console.log(result.data.message),
-    );
-    // Swal.fire({
-    //   title: 'Success!',
-    //   text: result.data.message,
-    //   icon: 'success',
-    // });
+    AlertSuccess('Success', result.data.message);
     navigation.navigate('CheckEmail');
   } catch (err) {
     dispatch({payload: err.response.data, type: 'GET_OTP_ERROR'});
-    SweetAlert.showAlertWithOptions(
-      {
-        title: 'Failed!',
-        subTitle: `error :  ${
-          err.response.data.messsage || err.response.data.message
-        } `,
-        confirmButtonColor: '#000',
-        style: 'error',
-      },
-      () =>
-        console.log(err.response.data.messsage || err.response.data.message),
+    AlertFailed(
+      'Failed',
+      err.response.data.messsage || err.response.data.message,
     );
-    // Swal.fire({
-    //   title: 'Failed!',
-    //   text: `error :  ${
-    //     err.response.data.messsage || err.response.data.message
-    //   } `,
-    //   icon: 'error',
-    // });
   }
 };
 
@@ -147,40 +98,13 @@ export const resetPasswordAction =
         },
       });
       dispatch({payload: result.data, type: 'RESET_PASSWORD_SUCCESS'});
-      SweetAlert.showAlertWithOptions(
-        {
-          title: 'Success!',
-          subTitle: result.data.message,
-          style: 'success',
-        },
-        () => console.log(result.data.message),
-      );
-      // Swal.fire({
-      //   title: 'Success!',
-      //   text: result.data.message,
-      //   icon: 'success',
-      // });
+      AlertSuccess('Reset Password Success', result.data.message);
       navigation.navigate('Login');
     } catch (err) {
       dispatch({payload: err.response.data, type: 'RESET_PASSWORD_ERROR'});
-      SweetAlert.showAlertWithOptions(
-        {
-          title: 'Failed!',
-          subTitle: `error :  ${
-            err.response.data.messsage || err.response.data.message
-          } `,
-          confirmButtonColor: '#000',
-          style: 'error',
-        },
-        () =>
-          console.log(err.response.data.messsage || err.response.data.message),
+      AlertFailed(
+        'Reset Password Failed',
+        err.response.data.messsage || err.response.data.message,
       );
-      // Swal.fire({
-      //   title: 'Failed!',
-      //   text: `error :  ${
-      //     err.response.data.messsage || err.response.data.message
-      //   } `,
-      //   icon: 'error',
-      // });
     }
   };
