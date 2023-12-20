@@ -47,7 +47,7 @@ const DetailRecipe = ({route, navigation}) => {
   const getDetailRecipe = async () => {
     try {
       const res = await axios.get(
-        `https://bewildered-rose-leggings.cyclic.app/recipe/detail/${id_recipe}`,
+        `https://ruby-long-kingfisher.cyclic.app/recipe/detail/${id_recipe}`,
         {
           headers: {
             token,
@@ -63,7 +63,7 @@ const DetailRecipe = ({route, navigation}) => {
   const getMySavedRecipes = async () => {
     try {
       const res = await axios.get(
-        'https://bewildered-rose-leggings.cyclic.app/event/bookmarked',
+        'https://ruby-long-kingfisher.cyclic.app/event/bookmarked',
         {
           headers: {
             token,
@@ -79,7 +79,7 @@ const DetailRecipe = ({route, navigation}) => {
   const getMyLikedRecipes = async () => {
     try {
       const res = await axios.get(
-        'https://bewildered-rose-leggings.cyclic.app/event/liked',
+        'https://ruby-long-kingfisher.cyclic.app/event/liked',
         {
           headers: {
             token,
@@ -134,7 +134,7 @@ const DetailRecipe = ({route, navigation}) => {
       action: async function () {
         try {
           const res = await axios.delete(
-            `https://bewildered-rose-leggings.cyclic.app/event/bookmark/${idBookmark[0]}`,
+            `https://ruby-long-kingfisher.cyclic.app/event/bookmark/${idBookmark[0]}`,
             {
               headers: {
                 token,
@@ -165,7 +165,7 @@ const DetailRecipe = ({route, navigation}) => {
       action: async function () {
         try {
           const res = await axios.post(
-            'https://bewildered-rose-leggings.cyclic.app/event',
+            'https://ruby-long-kingfisher.cyclic.app/event',
             data,
             {
               headers: {
@@ -198,7 +198,7 @@ const DetailRecipe = ({route, navigation}) => {
       action: async function () {
         try {
           const res = await axios.post(
-            'https://bewildered-rose-leggings.cyclic.app/event',
+            'https://ruby-long-kingfisher.cyclic.app/event',
             data,
             {
               headers: {
@@ -227,7 +227,7 @@ const DetailRecipe = ({route, navigation}) => {
       action: async function () {
         try {
           const res = await axios.delete(
-            `https://bewildered-rose-leggings.cyclic.app/event/like/${idLiked[0]}`,
+            `https://ruby-long-kingfisher.cyclic.app/event/like/${idLiked[0]}`,
             {
               headers: {
                 token,

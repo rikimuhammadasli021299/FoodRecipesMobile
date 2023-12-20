@@ -61,7 +61,7 @@ const PostRecipes = ({navigation}) => {
   const getCategory = async () => {
     try {
       const res = await axios.get(
-        'https://bewildered-rose-leggings.cyclic.app/category',
+        'https://ruby-long-kingfisher.cyclic.app/category',
         {
           headers: {
             token,
@@ -100,7 +100,7 @@ const PostRecipes = ({navigation}) => {
     bodyData.append('id_category', idCategory);
     try {
       const res = await axios.post(
-        'https://bewildered-rose-leggings.cyclic.app/recipe',
+        'https://ruby-long-kingfisher.cyclic.app/recipe',
         bodyData,
         {
           headers: {

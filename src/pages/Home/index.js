@@ -13,10 +13,15 @@ import {
   TextInput,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
-import {Soup, Seafood, Dessert, Chicken} from '../../assets';
+import {
+  logoDessert,
+  IconSearch,
+  logoMainCourse,
+  logoAppetizer,
+  italianFoods,
+} from '../../assets';
 import axios from 'axios';
 import {useIsFocused} from '@react-navigation/native';
-import {IconSearch} from '../../assets';
 
 const Home = ({navigation}) => {
   const [popularRecipes, setPopularRecipes] = useState();
@@ -26,7 +31,7 @@ const Home = ({navigation}) => {
   const getPopularRecipes = async () => {
     try {
       const res = await axios.get(
-        'https://bewildered-rose-leggings.cyclic.app/recipe?popular=popular',
+        'https://ruby-long-kingfisher.cyclic.app/recipe?popular=popular',
       );
       setPopularRecipes(res.data.data);
     } catch (error) {
@@ -37,7 +42,7 @@ const Home = ({navigation}) => {
   const getPopularForYou = async () => {
     try {
       const res = await axios.get(
-        'https://bewildered-rose-leggings.cyclic.app/recipe',
+        'https://ruby-long-kingfisher.cyclic.app/recipe',
       );
       setPopularForYou(res.data.data);
     } catch (error) {
@@ -65,7 +70,11 @@ const Home = ({navigation}) => {
           />
         </View>
         <Text style={styles.textPopular}>Popular Recipes</Text>
-        <Text style={styles.textPopularCheck}>Popular Check</Text>
+        <Text
+          style={styles.textPopularCheck}
+          onPress={() => navigation.navigate('PopularCheck')}>
+          Popular Check
+        </Text>
         <View style={styles.cardPopular}>
           <ScrollView showsVerticalScrollIndicator={false}>
             <FlatList
@@ -100,22 +109,66 @@ const Home = ({navigation}) => {
           <Text style={styles.moreInfo}>More Info</Text>
         </View>
         <View style={styles.wrapperNewRecipes}>
-          <View>
-            <Soup />
-            <Text style={styles.textNewRecipes}>Soup</Text>
-          </View>
-          <View>
-            <Chicken />
-            <Text style={styles.textNewRecipes}>Chicken</Text>
-          </View>
-          <View>
-            <Seafood />
-            <Text style={styles.textNewRecipes}>Seafood</Text>
-          </View>
-          <View>
-            <Dessert />
+          <TouchableOpacity
+            style={{display: 'flex'}}
+            onPress={() => navigation.navigate('MainCourse')}>
+            <Image
+              source={logoMainCourse}
+              style={{
+                width: 64,
+                height: 64,
+                objectFit: 'cover',
+                borderRadius: 10,
+                alignSelf: 'center',
+              }}
+            />
+            <Text style={styles.textNewRecipes}>Main Course</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={{display: 'flex'}}
+            onPress={() => navigation.navigate('Appetizer')}>
+            <Image
+              source={logoAppetizer}
+              style={{
+                width: 64,
+                height: 64,
+                objectFit: 'cover',
+                borderRadius: 10,
+                alignSelf: 'center',
+              }}
+            />
+            <Text style={styles.textNewRecipes}>Appetizer</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={{display: 'flex'}}
+            onPress={() => navigation.navigate('Dessert')}>
+            <Image
+              source={logoDessert}
+              style={{
+                width: 64,
+                height: 64,
+                objectFit: 'cover',
+                borderRadius: 10,
+                alignSelf: 'center',
+              }}
+            />
             <Text style={styles.textNewRecipes}>Dessert</Text>
-          </View>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={{display: 'flex'}}
+            onPress={() => navigation.navigate('ItalianFood')}>
+            <Image
+              source={italianFoods}
+              style={{
+                width: 64,
+                height: 64,
+                objectFit: 'cover',
+                borderRadius: 10,
+                alignSelf: 'center',
+              }}
+            />
+            <Text style={styles.textNewRecipes}>Italian Food</Text>
+          </TouchableOpacity>
         </View>
         <Text style={styles.textPopular}>Latest Recipes</Text>
         <View style={styles.cardPopular}>
@@ -253,6 +306,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginHorizontal: 28,
     marginTop: 10,
+    paddingVertical: 10,
   },
   textNewRecipes: {
     textAlign: 'center',

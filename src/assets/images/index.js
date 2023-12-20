@@ -7,6 +7,10 @@ import imgPopular4 from '../images/imgPopular4.jpg';
 import userDummy from '../images/userDummy.png';
 import showPassword from '../images/showPassword.png';
 import hidePassword from '../images/hidePassword.png';
+import logoDessert from '../images/logoDessert.png';
+import italianFoods from '../images/italianFoods.jpg';
+import logoAppetizer from '../images/logoAppetizer.png';
+import logoMainCourse from '../images/logoMainCourse.jpg';
 
 export {
   splash,
@@ -17,4 +21,8 @@ export {
   userDummy,
   showPassword,
   hidePassword,
+  logoDessert,
+  italianFoods,
+  logoAppetizer,
+  logoMainCourse,
 };

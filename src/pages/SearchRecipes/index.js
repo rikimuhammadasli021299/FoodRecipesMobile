@@ -20,7 +20,7 @@ const SearchRecipes = ({navigation}) => {
   const getRecipes = async () => {
     try {
       const res = await axios.get(
-        `https://bewildered-rose-leggings.cyclic.app/recipe?search=${keyword}`,
+        `https://ruby-long-kingfisher.cyclic.app/recipe?search=${keyword}`,
       );
       setResult(res.data.data);
       setKeyword('');

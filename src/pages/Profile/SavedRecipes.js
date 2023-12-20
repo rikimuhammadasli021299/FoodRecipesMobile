@@ -32,7 +32,7 @@ const SavedRecipes = ({navigation}) => {
   const getMySavedRecipes = async () => {
     try {
       const res = await axios.get(
-        'https://bewildered-rose-leggings.cyclic.app/event/bookmarked',
+        'https://ruby-long-kingfisher.cyclic.app/event/bookmarked',
         {
           headers: {
             token,
@@ -84,7 +84,7 @@ const SavedRecipes = ({navigation}) => {
                         action: async function () {
                           try {
                             const res = await axios.delete(
-                              `https://bewildered-rose-leggings.cyclic.app/event/bookmark/${items.id}`,
+                              `https://ruby-long-kingfisher.cyclic.app/event/bookmark/${items.id}`,
                               {
                                 headers: {
                                   token,

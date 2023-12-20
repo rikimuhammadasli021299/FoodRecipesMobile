@@ -7,6 +7,11 @@ import DetailRecipe from './DetailRecipe';
 import SearchRecipes from './SearchRecipes';
 import Comments from './Comments';
 import Auth from './Auth';
+import PopularCheck from './PopularCheck';
+import MainCourse from './MainCourse';
+import Appetizer from './Appetizer';
+import Dessert from './Dessert';
+import ItalianFood from './ItalianFood';
 
 export {
   Home,
@@ -17,4 +22,9 @@ export {
   SearchRecipes,
   Comments,
   Auth,
+  PopularCheck,
+  MainCourse,
+  Appetizer,
+  Dessert,
+  ItalianFood,
 };

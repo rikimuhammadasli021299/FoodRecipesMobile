@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import axios from 'axios';
 
-const base_url = 'https://bewildered-rose-leggings.cyclic.app';
+const base_url = 'https://ruby-long-kingfisher.cyclic.app';
 
 export const putPofile =
   (id_user, bodyData, navigation) => async (dispatch, getState) => {

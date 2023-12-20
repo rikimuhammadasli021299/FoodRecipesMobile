@@ -62,7 +62,7 @@ const EditRecipe = ({route, navigation}) => {
   const getCategory = async () => {
     try {
       const res = await axios.get(
-        'https://bewildered-rose-leggings.cyclic.app/category',
+        'https://ruby-long-kingfisher.cyclic.app/category',
         {
           headers: {
             token,
@@ -83,7 +83,7 @@ const EditRecipe = ({route, navigation}) => {
   const getDetailRecipe = async () => {
     try {
       const res = await axios.get(
-        `https://bewildered-rose-leggings.cyclic.app/recipe/detail/${id_recipe}`,
+        `https://ruby-long-kingfisher.cyclic.app/recipe/detail/${id_recipe}`,
         {
           headers: {
             token,
@@ -118,7 +118,7 @@ const EditRecipe = ({route, navigation}) => {
     bodyData.append('id_category', idCategory);
     try {
       const res = await axios.put(
-        `https://bewildered-rose-leggings.cyclic.app/recipe/${id_recipe}`,
+        `https://ruby-long-kingfisher.cyclic.app/recipe/${id_recipe}`,
         bodyData,
         {
           headers: {

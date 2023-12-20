@@ -1,4 +1,5 @@
 /* eslint-disable prettier/prettier */
+/* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react-hooks/exhaustive-deps */
 import {
   Image,
@@ -39,7 +40,7 @@ const ShowComments = ({route}) => {
   const getDetailRecipe = async () => {
     try {
       const res = await axios.get(
-        `https://bewildered-rose-leggings.cyclic.app/recipe/detail/${id_recipe}`,
+        `https://ruby-long-kingfisher.cyclic.app/recipe/detail/${id_recipe}`,
         {
           headers: {
             token,
@@ -74,7 +75,7 @@ const ShowComments = ({route}) => {
   };
 
   return (
-    <ScrollView>
+    <ScrollView style={{backgroundColor: '#fff'}}>
       <View style={styles.page(dimensions)}>
         <Text style={styles.text}>{dataDetailRecipe?.data?.title}</Text>
         {dataDetailRecipe?.data?.photo && (
@@ -213,7 +214,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     minWidth: (dimensions.screen.width * 100) / 100,
     position: 'absolute',
-    bottom: 0,
+    bottom: 10,
     justifyContent: 'space-evenly',
   }),
   wrapperInputComments: {

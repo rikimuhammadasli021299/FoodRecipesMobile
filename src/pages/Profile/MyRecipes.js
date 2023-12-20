@@ -31,7 +31,7 @@ const MyRecipes = ({navigation}) => {
   const getMyRecipes = async () => {
     try {
       const res = await axios.get(
-        'https://bewildered-rose-leggings.cyclic.app/recipe/show/myrecipes',
+        'https://ruby-long-kingfisher.cyclic.app/recipe/show/myrecipes',
         {
           headers: {
             token,
@@ -85,7 +85,7 @@ const MyRecipes = ({navigation}) => {
                       action: async function () {
                         try {
                           const res = await axios.delete(
-                            `https://bewildered-rose-leggings.cyclic.app/recipe/${items.id_recipe}`,
+                            `https://ruby-long-kingfisher.cyclic.app/recipe/${items.id_recipe}`,
                             {
                               headers: {
                                 token,

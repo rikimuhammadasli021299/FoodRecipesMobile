@@ -24,7 +24,7 @@ const ListRecipes = ({navigation}) => {
   const getRecipes = async () => {
     try {
       const res = await axios.get(
-        'https://bewildered-rose-leggings.cyclic.app/recipe?popular=popular',
+        'https://ruby-long-kingfisher.cyclic.app/recipe?popular=popular',
       );
       setResult(res.data.data);
     } catch (error) {
@@ -35,7 +35,7 @@ const ListRecipes = ({navigation}) => {
   const getSearchRecipes = async () => {
     try {
       const res = await axios.get(
-        `https://bewildered-rose-leggings.cyclic.app/recipe?search=${keyword}`,
+        `https://ruby-long-kingfisher.cyclic.app/recipe?search=${keyword}`,
       );
       setResult(res.data.data);
     } catch (error) {

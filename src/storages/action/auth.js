@@ -2,7 +2,7 @@
 import axios from 'axios';
 import SweetAlert from 'react-native-sweet-alert';
 
-const base_url = 'https://bewildered-rose-leggings.cyclic.app';
+const base_url = 'https://ruby-long-kingfisher.cyclic.app';
 
 export const loginAction = (email, password) => async dispatch => {
   let loginUrl = '/auth/login';

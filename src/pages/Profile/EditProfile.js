@@ -62,7 +62,7 @@ const EditProfile = ({navigation}) => {
   const getDetailProfile = async () => {
     try {
       const res = await axios.get(
-        `https://bewildered-rose-leggings.cyclic.app/users/${id_user}`,
+        `https://ruby-long-kingfisher.cyclic.app/users/${id_user}`,
         {
           headers: {
             token,
