@@ -194,6 +194,7 @@ const styles = StyleSheet.create({
     marginLeft: 7,
     paddingLeft: 7,
     width: '30%',
+    color: 'black',
   },
   date: {
     fontFamily: 'Poppins Regular',

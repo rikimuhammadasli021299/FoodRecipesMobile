@@ -172,7 +172,7 @@ const PostRecipes = ({navigation}) => {
     bodyData.append('id_category', idCategory);
     try {
       const res = await axios.post(
-        'https://ruby-long-kingfisher.cyclic.app/recipe',
+        'https://crowded-goat-trunks.cyclic.app/recipe',
         bodyData,
         {
           headers: {
@@ -190,7 +190,7 @@ const PostRecipes = ({navigation}) => {
       setSelectedImage('');
       console.log(res.data.message);
     } catch (error) {
-      console.log(error.response.data.messsage || error.response.data.message);
+      console.log(error);
       AlertFailed(
         'Failed',
         error.response.data.messsage || error.response.data.message,
