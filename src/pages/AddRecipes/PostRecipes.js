@@ -10,6 +10,7 @@ import {
   TextInput,
   TouchableOpacity,
   View,
+  ActivityIndicator,
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import {BookOpen} from '../../assets';
@@ -20,6 +21,7 @@ import {TitlePage} from '../../components';
 import {useIsFocused} from '@react-navigation/native';
 import {useSelector} from 'react-redux';
 import AlertUploadPhoto from '../../components/AlertConfirmation/AlertUploadPhoto';
+import AlertFailed from '../../components/AlertConfirmation/AlertFailed';
 
 const options = {
   title: 'Select Image',
@@ -46,6 +48,7 @@ const PostRecipes = ({navigation}) => {
   const [ingredients, setIngredients] = useState();
   const [ingredientsIsActive, setIngredientsIsActive] = useState(false);
   const [photo, setPhoto] = useState();
+  const [isLoading, setIsLoading] = useState(false);
 
   const isFocused = useIsFocused();
   const auth = useSelector(state => state.auth);
@@ -63,7 +66,7 @@ const PostRecipes = ({navigation}) => {
   const getCategory = async () => {
     try {
       const res = await axios.get(
-        'https://ruby-long-kingfisher.cyclic.app/category',
+        'https://crowded-goat-trunks.cyclic.app/category',
         {
           headers: {
             token,
@@ -82,17 +85,6 @@ const PostRecipes = ({navigation}) => {
     });
     setItemsCategory(data);
   };
-
-  // const openGallery = async () => {
-  //   const image = await launchImageLibrary(options);
-  //   setSelectedImage(image.assets[0].uri);
-  //   setPhoto({
-  //     uri: image.assets[0].uri,
-  //     name: image.assets[0].fileName,
-  //     fileName: image.assets[0].fileName,
-  //     type: image.assets[0].type,
-  //   });
-  // };
 
   const requestPermission = async () => {
     try {
@@ -119,12 +111,6 @@ const PostRecipes = ({navigation}) => {
   };
 
   const cameraLaunch = () => {
-    // let option = {
-    //   storageOptions: {
-    //     skipBackup: true,
-    //     path: 'image,',
-    //   },
-    // };
     launchCamera(options, res => {
       console.log('respons camera ', res);
       if (res.didCancel) {
@@ -146,13 +132,7 @@ const PostRecipes = ({navigation}) => {
   };
 
   const galleryLaunch = () => {
-    let option = {
-      storageOptions: {
-        skipBackup: true,
-        path: 'image,',
-      },
-    };
-    launchImageLibrary(option, res => {
+    launchImageLibrary(options, res => {
       console.log('respons gallery ', res);
       if (res.didCancel) {
         console.log('user cancel gallery');
@@ -173,6 +153,18 @@ const PostRecipes = ({navigation}) => {
   };
 
   const submit = async () => {
+    setIsLoading(true);
+    if (!title) {
+      AlertFailed('Failed', 'Title is required');
+      setIsLoading(false);
+      return false;
+    }
+    if (!ingredients) {
+      AlertFailed('Failed', 'Ingredients is required');
+      setIsLoading(false);
+      return false;
+    }
+
     let bodyData = new FormData();
     bodyData.append('title', title);
     bodyData.append('ingredients', ingredients);
@@ -189,6 +181,7 @@ const PostRecipes = ({navigation}) => {
           },
         },
       );
+      setIsLoading(false);
       navigation.navigate('MyRecipes');
       setTitle('');
       setIngredients('');
@@ -198,6 +191,11 @@ const PostRecipes = ({navigation}) => {
       console.log(res.data.message);
     } catch (error) {
       console.log(error.response.data.messsage || error.response.data.message);
+      AlertFailed(
+        'Failed',
+        error.response.data.messsage || error.response.data.message,
+      );
+      setIsLoading(false);
     }
   };
   return (
@@ -269,11 +267,15 @@ const PostRecipes = ({navigation}) => {
               placeholder="Category"
             />
           </View>
-          <View style={styles.wrapperBtn}>
-            <Text style={styles.textBtn} onPress={submit}>
-              POST
-            </Text>
-          </View>
+          <TouchableOpacity style={styles.wrapperBtn} onPress={submit}>
+            <Text style={styles.textBtn}>POST</Text>
+            {isLoading ? (
+              <ActivityIndicator
+                animating={isLoading ? true : false}
+                color={'#4d4d4dff'}
+              />
+            ) : null}
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </>
@@ -379,6 +381,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#EFC81A',
     borderRadius: 10,
     marginBottom: 150,
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
   },
   textBtn: {
     padding: 10,

@@ -31,7 +31,7 @@ const Home = ({navigation}) => {
   const getPopularRecipes = async () => {
     try {
       const res = await axios.get(
-        'https://ruby-long-kingfisher.cyclic.app/recipe?popular=popular',
+        'https://crowded-goat-trunks.cyclic.app/recipe?popular=popular',
       );
       setPopularRecipes(res.data.data);
     } catch (error) {
@@ -42,7 +42,7 @@ const Home = ({navigation}) => {
   const getPopularForYou = async () => {
     try {
       const res = await axios.get(
-        'https://ruby-long-kingfisher.cyclic.app/recipe',
+        'https://crowded-goat-trunks.cyclic.app/recipe',
       );
       setPopularForYou(res.data.data);
     } catch (error) {

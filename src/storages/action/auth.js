@@ -3,7 +3,7 @@ import axios from 'axios';
 import AlertFailed from '../../components/AlertConfirmation/AlertFailed';
 import AlertSuccess from '../../components/AlertConfirmation/AlertSuccess';
 
-const base_url = 'https://ruby-long-kingfisher.cyclic.app';
+const base_url = 'https://crowded-goat-trunks.cyclic.app';
 
 export const loginAction = (email, password) => async dispatch => {
   let loginUrl = '/auth/login';

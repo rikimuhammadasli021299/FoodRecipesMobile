@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import axios from 'axios';
 
-const base_url = 'https://ruby-long-kingfisher.cyclic.app';
+const base_url = 'https://crowded-goat-trunks.cyclic.app';
 
 export const getComments = id_recipe => async (dispatch, getState) => {
   let commentRecipesUrl = `/comments/${id_recipe}`;

@@ -34,7 +34,7 @@ const DetailProfile = ({navigation}) => {
   const getDetailProfile = async () => {
     try {
       const res = await axios.get(
-        `https://ruby-long-kingfisher.cyclic.app/users/${id_user}`,
+        `https://crowded-goat-trunks.cyclic.app/users/${id_user}`,
         {
           headers: {
             token,

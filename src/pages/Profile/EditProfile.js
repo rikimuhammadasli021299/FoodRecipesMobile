@@ -10,14 +10,16 @@ import {
   TouchableOpacity,
   TextInput,
   ActivityIndicator,
+  PermissionsAndroid,
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useIsFocused} from '@react-navigation/native';
-import {launchImageLibrary} from 'react-native-image-picker';
+import {launchImageLibrary, launchCamera} from 'react-native-image-picker';
 import axios from 'axios';
 import {User, UserActive} from '../../assets';
 import {putPofile} from '../../storages/action/profile';
+import AlertUploadPhoto from '../../components/AlertConfirmation/AlertUploadPhoto';
 
 const options = {
   title: 'Select Image',
@@ -48,21 +50,76 @@ const EditProfile = ({navigation}) => {
   let token = auth?.data?.token?.accessToken;
   let id_user = auth?.data?.uuid;
 
-  const openGallery = async () => {
-    const image = await launchImageLibrary(options);
-    setSelectedImage(image.assets[0].uri);
-    setPhoto({
-      uri: image.assets[0].uri,
-      name: image.assets[0].fileName,
-      fileName: image.assets[0].fileName,
-      type: image.assets[0].type,
+  const requestPermission = async () => {
+    try {
+      const granted = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.CAMERA,
+        {
+          title: 'App Camera Permission',
+          message: 'App Needs Camera Access',
+          buttonPositive: 'Ok',
+          buttonNegative: 'Cancel',
+        },
+      );
+      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+        console.log('access camera success');
+        cameraLaunch();
+      } else {
+        console.log('access camera failed');
+        console.log(PermissionsAndroid.RESULTS.GRANTED);
+      }
+    } catch (err) {
+      console.log('err');
+      console.log(err);
+    }
+  };
+
+  const cameraLaunch = () => {
+    launchCamera(options, res => {
+      console.log('respons camera ', res);
+      if (res.didCancel) {
+        console.log('user cancel camera');
+      } else if (res.error) {
+        console.log('camera error', res.errorMessage);
+      } else {
+        console.log('camera success');
+        console.log(res);
+        setSelectedImage(res.assets[0].uri);
+        setPhoto({
+          uri: res.assets[0].uri,
+          name: res.assets[0].fileName,
+          fileName: res.assets[0].fileName,
+          type: res.assets[0].type,
+        });
+      }
+    });
+  };
+
+  const galleryLaunch = () => {
+    launchImageLibrary(options, res => {
+      console.log('respons gallery ', res);
+      if (res.didCancel) {
+        console.log('user cancel gallery');
+      } else if (res.error) {
+        console.log('gallery error', res.errorMessage);
+      } else {
+        console.log('gallery success');
+        console.log(res);
+        setSelectedImage(res.assets[0].uri);
+        setPhoto({
+          uri: res.assets[0].uri,
+          name: res.assets[0].fileName,
+          fileName: res.assets[0].fileName,
+          type: res.assets[0].type,
+        });
+      }
     });
   };
 
   const getDetailProfile = async () => {
     try {
       const res = await axios.get(
-        `https://ruby-long-kingfisher.cyclic.app/users/${id_user}`,
+        `https://crowded-goat-trunks.cyclic.app/users/${id_user}`,
         {
           headers: {
             token,
@@ -97,7 +154,15 @@ const EditProfile = ({navigation}) => {
         {photo ? (
           <Image source={{uri: selectedImage || photo}} style={styles.image} />
         ) : null}
-        <TouchableOpacity onPress={openGallery}>
+        <TouchableOpacity
+          onPress={() =>
+            AlertUploadPhoto({
+              alertTitle: 'Add photo',
+              alertMsg: 'Where will you add the photo?',
+              camera: requestPermission,
+              gallery: galleryLaunch,
+            })
+          }>
           <Text style={styles.text}>Change photo profile</Text>
         </TouchableOpacity>
         <View

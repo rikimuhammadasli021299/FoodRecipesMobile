@@ -8,7 +8,10 @@ const AlertConfirmation = ({alertTitle, alertMsg, action}) => {
       onPress: () => console.log('Cancel Pressed'),
       style: 'cancel',
     },
-    {text: 'OK', onPress: () => action()},
+    {
+      text: 'OK',
+      onPress: () => action(),
+    },
   ]);
 };
 

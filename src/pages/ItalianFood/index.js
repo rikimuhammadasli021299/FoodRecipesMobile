@@ -20,7 +20,7 @@ const ItalianFood = ({navigation}) => {
   const getItalianFood = async () => {
     try {
       const res = await axios.get(
-        'https://ruby-long-kingfisher.cyclic.app/recipe?category=11',
+        'https://crowded-goat-trunks.cyclic.app/recipe?category=11',
       );
       setDataItalianFood(res.data.data);
     } catch (error) {

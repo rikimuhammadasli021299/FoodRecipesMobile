@@ -20,7 +20,7 @@ const MainCourse = ({navigation}) => {
   const getMainCourse = async () => {
     try {
       const res = await axios.get(
-        'https://ruby-long-kingfisher.cyclic.app/recipe?category=1',
+        'https://crowded-goat-trunks.cyclic.app/recipe?category=1',
       );
       setDataMainCourse(res.data.data);
     } catch (error) {

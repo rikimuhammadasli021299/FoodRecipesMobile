@@ -20,7 +20,7 @@ const Dessert = ({navigation}) => {
   const getDessert = async () => {
     try {
       const res = await axios.get(
-        'https://ruby-long-kingfisher.cyclic.app/recipe?category=2',
+        'https://crowded-goat-trunks.cyclic.app/recipe?category=2',
       );
       setDataDessert(res.data.data);
     } catch (error) {

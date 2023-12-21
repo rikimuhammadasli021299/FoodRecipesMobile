@@ -40,7 +40,7 @@ const ShowComments = ({route}) => {
   const getDetailRecipe = async () => {
     try {
       const res = await axios.get(
-        `https://ruby-long-kingfisher.cyclic.app/recipe/detail/${id_recipe}`,
+        `https://crowded-goat-trunks.cyclic.app/recipe/detail/${id_recipe}`,
         {
           headers: {
             token,

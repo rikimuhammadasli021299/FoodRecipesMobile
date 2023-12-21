@@ -12,19 +12,23 @@ import {
 import {IconSearch} from '../../assets';
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
+import {useIsFocused} from '@react-navigation/native';
 
 const ListRecipes = ({navigation}) => {
   const [keyword, setKeyword] = useState('');
   const [result, setResult] = useState();
+  const isFocused = useIsFocused();
 
   useEffect(() => {
-    getRecipes();
-  }, []);
+    if (isFocused) {
+      getRecipes();
+    }
+  }, [isFocused]);
 
   const getRecipes = async () => {
     try {
       const res = await axios.get(
-        'https://ruby-long-kingfisher.cyclic.app/recipe?popular=popular',
+        'https://crowded-goat-trunks.cyclic.app/recipe?popular=popular',
       );
       setResult(res.data.data);
     } catch (error) {
@@ -35,7 +39,7 @@ const ListRecipes = ({navigation}) => {
   const getSearchRecipes = async () => {
     try {
       const res = await axios.get(
-        `https://ruby-long-kingfisher.cyclic.app/recipe?search=${keyword}`,
+        `https://crowded-goat-trunks.cyclic.app/recipe?search=${keyword}`,
       );
       setResult(res.data.data);
     } catch (error) {

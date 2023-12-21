@@ -7,6 +7,8 @@ import authResetPassword from './authResetPassword';
 import editProfile from './editProfile';
 import showComments from './showComments';
 import postComment from './postComment';
+import likedRecipes from './likedRecipes';
+import unlikeRecipes from './unlikeRecipes';
 
 const rootReducers = combineReducers({
   auth,
@@ -16,6 +18,8 @@ const rootReducers = combineReducers({
   editProfile,
   showComments,
   postComment,
+  likedRecipes,
+  unlikeRecipes,
 });
 
 export default rootReducers;
