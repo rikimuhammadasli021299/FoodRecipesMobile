@@ -53,7 +53,6 @@ Before you install this project on your Mobile Phone. You need:
 - [**React Navigation Bottom Tabs 6.5.11**]()
 - [**React Navigation Native 6.1.9**]()
 - [**React Navigation Native Stack 6.9.17**]()
-- [**Axios 1.6.2**]()
 - [**React Native Dropdown Picker 5.4.6**]()
 - [**React Native Image Picker 7.1.0**]()
 - [**React Native Safe Area Context 4.8.0**]()
@@ -61,11 +60,13 @@ Before you install this project on your Mobile Phone. You need:
 - [**React Native Snap Carousel 3.9.1**]()
 - [**React Native svg 14.1.0**]()
 - [**React Native svg Transformer 1.1.0**]()
+- [**React Native Onesignal 5.0.4**]()
 - [**React Redux 9.0.4**]()
 - [**Redux 5.0.0**]()
 - [**Redux Logger 3.0.6**]()
 - [**Redux Persist 6.0.0**]()
 - [**Redux Thunk 3.1.0**]()
+- [**Axios 1.6.2**]()
 
 ## Installation
 
