@@ -1,4 +1,5 @@
 /* eslint-disable prettier/prettier */
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-native/no-inline-styles */
 
 import {
@@ -22,11 +23,16 @@ import {
 } from '../../assets';
 import axios from 'axios';
 import {useIsFocused} from '@react-navigation/native';
+import {OneSignal} from 'react-native-onesignal';
+import {useSelector} from 'react-redux';
 
 const Home = ({navigation}) => {
   const [popularRecipes, setPopularRecipes] = useState();
   const [popularForYou, setPopularForYou] = useState();
   const isFocused = useIsFocused();
+  const auth = useSelector(state => state.auth);
+  let id_user = auth?.data?.uuid;
+  let email_user = auth?.data?.email;
 
   const getPopularRecipes = async () => {
     try {
@@ -56,6 +62,12 @@ const Home = ({navigation}) => {
       getPopularForYou();
     }
   }, [isFocused]);
+
+  useEffect(() => {
+    OneSignal.User.addTag('userID', id_user);
+    OneSignal.User.addEmail(email_user);
+  }, [id_user]);
+
   return (
     <ScrollView
       contentInsetAdjustmentBehavior="automatic"

@@ -19,9 +19,6 @@ class App extends Component {
     OneSignal.Debug.setLogLevel(LogLevel.Verbose);
     OneSignal.initialize(AppID);
     OneSignal.Notifications.requestPermission(true);
-    OneSignal.Notifications.addEventListener('click', event => {
-      console.log('OneSignal: notification clicked:', event);
-    });
   }
   render() {
     return (

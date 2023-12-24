@@ -22,8 +22,10 @@ import {postCommentAction} from '../../storages/action/comments';
 const windowDimensions = Dimensions.get('window');
 const screenDimensions = Dimensions.get('screen');
 
-const ShowComments = ({route}) => {
+const ShowComments = ({route, navigation}) => {
   const [dataDetailRecipe, setDataDetailRecipe] = useState();
+  const [idAuthorRecipe, setIdAuthorRecipe] = useState();
+  const [titleRecipe, settitleRecipe] = useState();
   const [dimensions, setDimensions] = useState({
     window: windowDimensions,
     screen: screenDimensions,
@@ -48,6 +50,8 @@ const ShowComments = ({route}) => {
         },
       );
       setDataDetailRecipe(res.data);
+      setIdAuthorRecipe(res.data.data.uuid_author);
+      settitleRecipe(res.data.data.title);
     } catch (error) {
       console.log(error.message);
     }
@@ -71,7 +75,15 @@ const ShowComments = ({route}) => {
   });
 
   const submit = () => {
-    dispatch(postCommentAction(id_recipe, comment));
+    dispatch(
+      postCommentAction(
+        id_recipe,
+        comment,
+        idAuthorRecipe,
+        titleRecipe,
+        navigation,
+      ),
+    );
   };
 
   return (
@@ -135,6 +147,7 @@ const styles = StyleSheet.create({
     fontSize: 21,
     textAlign: 'center',
     marginTop: 15,
+    color: 'black',
   },
   image: {
     width: 300,
