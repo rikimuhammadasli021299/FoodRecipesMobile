@@ -118,7 +118,11 @@ const Home = ({navigation}) => {
         </View>
         <View style={styles.newRecipesTitle}>
           <Text style={styles.newRecipes}>New Recipes</Text>
-          <Text style={styles.moreInfo}>More Info</Text>
+          <Text
+            style={styles.moreInfo}
+            onPress={() => navigation.navigate('NewRecipes')}>
+            More Info
+          </Text>
         </View>
         <View style={styles.wrapperNewRecipes}>
           <TouchableOpacity

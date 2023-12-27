@@ -13,16 +13,16 @@ import {IconUser, IconMyUnliked, IconBookmark} from '../../assets';
 import {useIsFocused} from '@react-navigation/native';
 import axios from 'axios';
 
-const ItalianFood = ({navigation}) => {
+const NewRecipes = ({navigation}) => {
   const isFocused = useIsFocused();
-  const [dataItalianFood, setDataItalianFood] = useState();
+  const [newRecipes, setNewRecipes] = useState();
 
-  const getItalianFood = async () => {
+  const getNewRecipes = async () => {
     try {
       const res = await axios.get(
-        'https://crowded-goat-trunks.cyclic.app/recipe?category=11&limit=100',
+        'https://crowded-goat-trunks.cyclic.app/recipe?limit=100',
       );
-      setDataItalianFood(res.data.data);
+      setNewRecipes(res.data.data);
     } catch (error) {
       console.log(error.message);
     }
@@ -30,17 +30,19 @@ const ItalianFood = ({navigation}) => {
 
   useEffect(() => {
     if (isFocused) {
-      getItalianFood();
+      getNewRecipes();
     }
   }, [isFocused]);
 
   return (
     <ScrollView style={styles.page}>
       <View style={styles.page}>
-        {dataItalianFood?.length > 0 ? (
-          dataItalianFood.map((items, index) => {
+        {newRecipes &&
+          newRecipes.map((items, index) => {
             return (
-              <View style={styles.container} key={index + 1}>
+              <View
+                style={index === 0 ? styles.containerPopular : styles.container}
+                key={index + 1}>
                 <TouchableOpacity
                   style={{
                     display: 'flex',
@@ -73,31 +75,13 @@ const ItalianFood = ({navigation}) => {
                 </View>
               </View>
             );
-          })
-        ) : (
-          <View
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              marginHorizontal: 28,
-            }}>
-            <Text
-              style={{
-                color: '#aeb4bdff',
-                fontFamily: 'Poppins Regular',
-                fontSize: 23,
-              }}>
-              No recipes yet
-            </Text>
-          </View>
-        )}
+          })}
       </View>
     </ScrollView>
   );
 };
 
-export default ItalianFood;
+export default NewRecipes;
 
 const styles = StyleSheet.create({
   page: {
@@ -109,6 +93,16 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     backgroundColor: '#FFF',
+    marginHorizontal: 18,
+    marginTop: 30,
+    padding: 10,
+    borderRadius: 16,
+    elevation: 5,
+  },
+  containerPopular: {
+    display: 'flex',
+    flexDirection: 'row',
+    backgroundColor: '#00E092',
     marginHorizontal: 18,
     marginTop: 30,
     padding: 10,

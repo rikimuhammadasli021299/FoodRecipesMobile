@@ -1,11 +1,10 @@
 /* eslint-disable prettier/prettier */
 import axios from 'axios';
-import {OneSignal, LogLevel} from 'react-native-onesignal';
 
 const base_url = 'https://crowded-goat-trunks.cyclic.app';
 
 export const getComments = id_recipe => async (dispatch, getState) => {
-  let commentRecipesUrl = `/comments/${id_recipe}`;
+  let commentRecipesUrl = `/comments/${id_recipe}?limit=100`;
   try {
     dispatch({type: 'SHOW_COMMENTS_REQUEST'});
     let token = await getState().auth.data.token.accessToken;
@@ -54,10 +53,15 @@ export const postCommentAction =
           filters: [
             {field: 'tag', key: 'userID', relation: '=', value: idAuthorRecipe},
           ],
+          headings: {
+            en: 'New Comments',
+            id: 'Komentar Baru',
+          },
           contents: {
             en: `${commenter} comments your ${titleRecipe} recipe: "${comment}"`,
             id: `${commenter} mengomentari resep ${titleRecipe}: "${comment}"`,
           },
+          data: {id_recipe},
         },
       };
 
@@ -69,13 +73,6 @@ export const postCommentAction =
         .catch(function (error) {
           console.error('error', error);
         });
-      OneSignal.Debug.setLogLevel(LogLevel.Verbose);
-      OneSignal.Notifications.addEventListener('click', event => {
-        console.log('OneSignal: notification comments:', event);
-        navigation.navigate('ShowComments', {
-          id_recipe: id_recipe,
-        });
-      });
     } catch (err) {
       dispatch({payload: err.message, type: 'POST_COMMENTS_ERROR'});
       dispatch(getComments(data.id_recipe));

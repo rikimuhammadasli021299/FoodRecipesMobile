@@ -31,7 +31,7 @@ const MyRecipes = ({navigation}) => {
   const getMyRecipes = async () => {
     try {
       const res = await axios.get(
-        'https://crowded-goat-trunks.cyclic.app/recipe/show/myrecipes',
+        'https://crowded-goat-trunks.cyclic.app/recipe/show/myrecipes?limit=100',
         {
           headers: {
             token,

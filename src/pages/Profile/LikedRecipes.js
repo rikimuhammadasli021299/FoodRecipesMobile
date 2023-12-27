@@ -32,7 +32,7 @@ const LikedRecipes = ({navigation}) => {
   const getMyLikedRecipes = async () => {
     try {
       const res = await axios.get(
-        'https://crowded-goat-trunks.cyclic.app/event/liked',
+        'https://crowded-goat-trunks.cyclic.app/event/liked?limit=100',
         {
           headers: {
             token,

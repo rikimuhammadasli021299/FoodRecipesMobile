@@ -28,7 +28,7 @@ const ListRecipes = ({navigation}) => {
   const getRecipes = async () => {
     try {
       const res = await axios.get(
-        'https://crowded-goat-trunks.cyclic.app/recipe?popular=popular',
+        'https://crowded-goat-trunks.cyclic.app/recipe?limit=100',
       );
       setResult(res.data.data);
     } catch (error) {

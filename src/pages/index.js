@@ -12,6 +12,8 @@ import MainCourse from './MainCourse';
 import Appetizer from './Appetizer';
 import Dessert from './Dessert';
 import ItalianFood from './ItalianFood';
+import ShowComments from './Comments/ShowComments';
+import NewRecipes from './NewRecipes';
 
 export {
   Home,
@@ -27,4 +29,6 @@ export {
   Appetizer,
   Dessert,
   ItalianFood,
+  ShowComments,
+  NewRecipes,
 };

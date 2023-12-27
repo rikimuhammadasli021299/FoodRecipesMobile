@@ -32,7 +32,7 @@ const SavedRecipes = ({navigation}) => {
   const getMySavedRecipes = async () => {
     try {
       const res = await axios.get(
-        'https://crowded-goat-trunks.cyclic.app/event/bookmarked',
+        'https://crowded-goat-trunks.cyclic.app/event/bookmarked?limit=100',
         {
           headers: {
             token,

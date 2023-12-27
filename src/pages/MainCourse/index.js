@@ -20,7 +20,7 @@ const MainCourse = ({navigation}) => {
   const getMainCourse = async () => {
     try {
       const res = await axios.get(
-        'https://crowded-goat-trunks.cyclic.app/recipe?category=1',
+        'https://crowded-goat-trunks.cyclic.app/recipe?category=1&limit=100',
       );
       setDataMainCourse(res.data.data);
     } catch (error) {

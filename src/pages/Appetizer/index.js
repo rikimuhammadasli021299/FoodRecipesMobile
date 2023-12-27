@@ -20,7 +20,7 @@ const Appetizer = ({navigation}) => {
   const getAppetizer = async () => {
     try {
       const res = await axios.get(
-        'https://crowded-goat-trunks.cyclic.app/recipe?category=5',
+        'https://crowded-goat-trunks.cyclic.app/recipe?category=5&limit=100',
       );
       setDataAppetizer(res.data.data);
     } catch (error) {

@@ -1,4 +1,5 @@
 /* eslint-disable prettier/prettier */
+/* eslint-disable quotes */
 /* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -17,14 +18,36 @@ import {
   Appetizer,
   Dessert,
   ItalianFood,
+  ShowComments,
+  NewRecipes,
 } from '../pages';
 import {BottomNavigatiors} from '../components';
 import {useSelector} from 'react-redux';
+import {OneSignal, LogLevel} from 'react-native-onesignal';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
-const MainApp = () => {
+const MainApp = ({navigation}) => {
+  OneSignal.Debug.setLogLevel(LogLevel.Verbose);
+  OneSignal.Notifications.addEventListener('click', event => {
+    console.log('OneSignal: notification comments:', event.notification.title);
+    if (
+      event.notification.title === `There's a new recipe!` ||
+      event.notification.title === 'Ada resep baru!'
+    ) {
+      console.log('to detail recipes');
+      navigation.navigate('NewRecipes');
+    } else if (
+      event.notification.title === 'Komentar Baru' ||
+      event.notification.title === 'New Comments'
+    ) {
+      console.log('to comments');
+      navigation.navigate('ShowComments', {
+        id_recipe: event.notification.additionalData.id_recipe,
+      });
+    }
+  });
   return (
     <Tab.Navigator tabBar={props => <BottomNavigatiors {...props} />}>
       <Tab.Screen name="Home" component={Home} options={{headerShown: false}} />
@@ -133,6 +156,30 @@ const Router = () => {
         component={ItalianFood}
         options={{
           title: 'Italian Food',
+          headerTitleAlign: 'center',
+          headerTitleStyle: {
+            fontFamily: 'Poppins Regular',
+            color: '#F1CD31',
+          },
+        }}
+      />
+      <Stack.Screen
+        name="ShowComments"
+        component={ShowComments}
+        options={{
+          title: 'Comments',
+          headerTitleAlign: 'center',
+          headerTitleStyle: {
+            fontFamily: 'Poppins Regular',
+            color: '#F1CD31',
+          },
+        }}
+      />
+      <Stack.Screen
+        name="NewRecipes"
+        component={NewRecipes}
+        options={{
+          title: 'New Recipes',
           headerTitleAlign: 'center',
           headerTitleStyle: {
             fontFamily: 'Poppins Regular',
