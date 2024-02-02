@@ -21,6 +21,8 @@ import {
   ShowComments,
   NewRecipes,
 } from '../pages';
+import ActivateAccount from '../pages/Auth/ActivateAccount';
+import Login from '../pages/Auth/Login';
 import {BottomNavigatiors} from '../components';
 import {useSelector} from 'react-redux';
 import {OneSignal, LogLevel} from 'react-native-onesignal';
@@ -72,6 +74,10 @@ const MainApp = ({navigation}) => {
 
 const Router = () => {
   const auth = useSelector(state => state.auth);
+  const authActivateAccount = useSelector(state => state.authActivateAccount);
+  const authRegister = useSelector(state => state.authRegister);
+  console.log(authActivateAccount.isActive);
+  console.log(authRegister.data);
   return (
     <Stack.Navigator initialRouteName="Splash">
       <Stack.Screen
@@ -92,6 +98,17 @@ const Router = () => {
           options={{headerShown: false}}
         />
       )}
+
+      <Stack.Screen
+        name="ActivateAccount"
+        component={ActivateAccount}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Login"
+        component={Login}
+        options={{headerShown: false}}
+      />
 
       <Stack.Screen
         name="DetailRecipe"

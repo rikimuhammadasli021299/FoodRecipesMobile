@@ -6,6 +6,7 @@ import Register from './Register';
 import ForgotPassword from './ForgotPassword';
 import CheckEmail from './CheckEmail';
 import ResetPassword from './ResetPassword';
+import ActivateAccount from './ActivateAccount';
 
 const Stack = createNativeStackNavigator();
 
@@ -35,6 +36,11 @@ const Auth = () => {
       <Stack.Screen
         name="ResetPassword"
         component={ResetPassword}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="ActivateAccount"
+        component={ActivateAccount}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

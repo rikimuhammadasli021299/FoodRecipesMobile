@@ -9,9 +9,18 @@ import {useSelector} from 'react-redux';
 
 const Splash = ({navigation}) => {
   const auth = useSelector(state => state.auth);
+  const authActivateAccount = useSelector(state => state.authActivateAccount);
+  const authRegister = useSelector(state => state.authRegister);
+
   useEffect(() => {
     setTimeout(() => {
-      navigation.replace(auth.data ? 'MainApp' : 'Auth');
+      navigation.replace(
+        auth.data
+          ? 'MainApp'
+          : authRegister.data && !authActivateAccount.isActive
+          ? 'ActivateAccount'
+          : 'Auth',
+      );
     }, 3000);
   }, [navigation]);
 

@@ -49,9 +49,37 @@ export const registerAction =
       });
       dispatch({payload: result.data, type: 'AUTH_REGISTER_SUCCESS'});
       AlertSuccess('Register Success', result.data.message);
-      navigation.navigate('Login');
+      navigation.navigate('ActivateAccount');
     } catch (err) {
       dispatch({payload: err.response.data, type: 'AUTH_REGISTER_ERROR'});
+      AlertFailed(
+        'Register Failed',
+        err.response.data.messsage || err.response.data.message,
+      );
+    }
+  };
+
+export const activateAccountAction =
+  (uuid, otp, navigation) => async dispatch => {
+    let activateUrl = `/auth/activate/${uuid}`;
+    let bodyData = {
+      otp,
+    };
+    try {
+      dispatch({type: 'AUTH_ACTIVATE_ACCOUNT_PENDING'});
+      const result = await axios.post(base_url + activateUrl, bodyData, {
+        headers: {
+          'content-type': 'application/x-www-form-urlencoded',
+        },
+      });
+      dispatch({payload: result.data, type: 'AUTH_ACTIVATE_ACCOUNT_SUCCESS'});
+      AlertSuccess('Activate Success', result.data.message);
+      navigation.navigate('Login');
+    } catch (err) {
+      dispatch({
+        payload: err.response.data,
+        type: 'AUTH_ACTIVATE_ACCOUNT_ERROR',
+      });
       AlertFailed(
         'Register Failed',
         err.response.data.messsage || err.response.data.message,
